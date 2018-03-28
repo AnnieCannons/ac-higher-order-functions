@@ -44,7 +44,7 @@
 
         <!--Introduction slide-->
         <section>
-            <h1>Higher-Order Functions in JavaScript</h1>
+            <h2>Higher-Order Functions in JavaScript</h2>
         </section>
         
         <section>
@@ -133,7 +133,7 @@ var foo = increment(2);
         <section>
             <h2>Scopes and Closures</h2>
             <p>Cake Example</p>
-            <img src="img/cake.jpg" alt="Cake Image">
+            <img src="img/cake.jpg" alt="Cake Image" width="500px">
         </section>
 
         <section>
@@ -153,7 +153,7 @@ var add10 = makeAdder(10);
 
         <section>
             <h2>Review the Recipe</h2>
-            <img src="img/recipe.png" alt="">
+            <img src="img/recipe.png" alt="Steps for creating a closure">
         </section>
 
         <section>
@@ -169,11 +169,6 @@ function counter() {
 }
 var myCounter = counter();
 </code></pre>
-        </section>
-
-        <section>
-            <h2>Closures with Objects</h2>
-            <img src="img/object.png" alt="">
         </section>
 
         <section>
@@ -211,7 +206,7 @@ var myCounter = counter();
 
         <section>
             <h2>Event listeners! (clicks, etc)</h2>
-            <img src="images/event.png" alt="">
+            <img src="img/event.png" alt="jQuery Event Listener">
         </section>
 
         <section>
@@ -222,11 +217,11 @@ var myCounter = counter();
         <section>
             <h2>Callbacks</h2>
             <p class="fragment">A function that takes other functions as arguments or returns functions as its result is called a higher-order function, and the function that is passed as an argument is called a callback function. It’s named “callback” because at some point in time it is “called back” by the higher-order function.</p>
-            <p class="fragment">They are great with Event Listeners and Ajax!</p>
+            <p class="fragment">They are great with Event Listeners!</p>
         </section>
 
         <section>
-            <img src="images/ryan-gosling-callback.jpg" alt="">
+            <img src="img/ryan-gosling-callback.jpg" alt="Ryan Gosling asking for a callback">
         </section>
 
         <section>
@@ -287,18 +282,73 @@ publish("10 Tips for JavaScript Developers", "Jane Doe", articles);
 
         <section>
             <h2>Callback If Statements</h2>
-            <img src="images/ifstatement.png" alt="">
+            <img src="img/ifstatement.png" alt="Callback Example">
+        </section>
+
+        <section>
+            <h2>settimeout()</h2>
+            <p>This is a tool that helps mimic the time it takes data to travel or program to execute</p>
+            <p>Sets a timer which executes a function or specified piece of code once after the timer expires.
+<pre><code class="js">setTimeout()
+//
+function hello(){
+    alert("Hello!")
+}
+setTimeout(hello, 3000)
+</code></pre>
         </section>
 
         <section>
             <h2>Callback with a Closure</h2>
-            <img src="images/async.png" alt="">
+            <img src="img/async.png" alt="Higher Order Functions">
+        </section>
+
+        <section>
+            <h2>Explain this code: with minions!</h2>
+<pre><code>
+function reportOrders (minionOrders) {
+    if ( typeof minionOrders === "string"){
+        console.log(minionOrders);
+    }
+    else if ( typeof minionOrders === "object"){
+        for (var item in minionOrders) {
+            console.log(item + ": " + minionOrders[item]);
+        }
+    }
+}
+
+​function speakOrders (orders, callback) {
+    callback (orders);
+}
+​
+speakOrders ({name:"Minion1031", speciality:"Scribe"}, reportOrders);
+
+</code></pre>
+        </section>
+
+        <section>
+            <h2>More Callbacks with Minions</h2>
+            <p><a href="https://medium.freecodecamp.org/javascript-callbacks-explained-using-minions-da272f4d9bcd">Click here</a></p>
         </section>
 
         <section>
             <h2>Callback Exercise</h2>
-            <p>Write a function, poemMaker, that takes in one parameter: 1) a person's name (string). The code should log to the console the sentence "[Person's name] is finer than fine wine. Altruistic and noble for the modern time". Create a second function, getUserInput that takes in three parameters: 1) firstName (string), lastName(string), and a callback. This function should concatenate the names and execute the poemMaker functions as a callback.
-            </p>
+            <p>Write a function, poemMaker, that takes in one parameter: 
+                <ol>
+                    <li> a person's name (string).</li>
+                </ol>  
+            <p>The code should log to the console the sentence "[Person's name] is finer than fine wine. Altruistic and noble for the modern time".</p>  
+        </section>
+
+        <section>
+            <h2>Callback Exercise (Part 2)</h2> 
+            <p>Create a second function, getUserInput that takes in three parameters: </p> 
+            <ol>
+                <li> firstName (string)</li>
+                <li>lastName(string)</li>
+                <li>a callback</li>
+            </ol>
+            <p>This function should concatenate the names and execute the poemMaker functions as a callback.</p>
         </section>
 
         <section style="text-align: left;">
