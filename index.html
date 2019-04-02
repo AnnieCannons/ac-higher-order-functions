@@ -69,26 +69,64 @@ init();
 
         <section>
             <h2>Introduction to closures!</h2>
-            <p>A closure is created when an inner function is made accessible from outside of the function that created it. This typically occurs when an outer function returns an inner function. When this happens, the inner function maintains a reference to the environment in which it was created.</p>
-            <p>This means that it remembers all of the variables (and their values) that were in scope at the time.</p>
-        </section>
-
-        <section>   
-            <h2>Let's read through this document</h2>
+            <p>You can go through more of these concepts in this document</p>
             <p><a href="https://medium.freecodecamp.com/lets-learn-javascript-closures-66feb44f6a44#.sh60kj2ai">Click here</a></p>
         </section>
 
         <section>
-            <h2>Let's talk about this function</h2>
-            <pre><code class="hljs" data-trim contenteditable>
-function sayHello(name){
-    var text = 'Hello ' + name;
-    var say = function() {
-        console.log(text)
+            <h2>What is a closure?</h2>
+            <p>Closures are functions that refer to independent (free) variables. In other words, the function defined in the closure ‘remembers’ the environment in which it was created.</p>
+            <p class="fragment">A closure is created when an inner function is made accessible from outside of the function that created it. This typically occurs when an outer function returns an inner function.</p>
+            <p class="fragment">This means that it remembers all of the variables (and their values) that were in scope at the time.</p>
+        </section>
+
+        <section>
+            <h2>Seriously, what?</h2>
+            <img src="img/pardon.gif" alt="Pardon Me?">
+        </section>
+
+        <section>
+            <h2>Closures</h2>
+            <p>Closures have many practical use cases. One important use case is to maintain a private reference to a variable in the outer scope.</p>
+            <p>We can use closures to make only certain things in our function accessible by other parts of our program.</p>
+        </section>
+
+        <section>
+            <h2>Examples!</h2>
+<pre><code>
+function numberGenerator() {
+    // Local “free” variable that ends up within the closure
+    var num = 1;
+    function checkNumber() { 
+        console.log(num);
     }
-    say();
+    num++;
+    return checkNumber;
 }
-        </code></pre>
+    
+var number = numberGenerator();
+number(); // 2
+</code></pre>
+        </section>
+
+        <section>
+            <h2>Closures</h2>
+            <p>Often closures are created when a function is the <span>output</span> on another function</p>
+<pre><code>
+function sayHello() {
+    var say = function() { console.log(hello); }
+    // Local variable that ends up within the closure 
+    var hello = 'Hello, world!';
+    return say;
+}
+var sayHelloClosure = sayHello(); 
+sayHelloClosure(); // ‘Hello, world!’
+</code></pre>
+        </section>
+
+        <section>
+            <h2>Explaining the code</h2>
+            <p>In the example above, the function numberGenerator creates a local “free” variable num (a number) and checkNumber (a function which prints num to the console). </p><p>The function checkNumber doesn’t have any local variables of its own — however, it does have access to the variables within the outer function, numberGenerator, because of a closure. <p>Therefore, it can use the variable num declared in numberGenerator to successfully log it to the console even after numberGenerator has returned.</p>
         </section>
 
         <section>
@@ -104,6 +142,27 @@ function sayHello2(name){
 var say2 = sayHello2('Bob');
 say2(); // logs "Hello Bob"
         </code></pre>
+        </section>
+
+        <section>
+            <h2>Another example</h2>
+<pre><code>var x = 10;
+function foo(a) {
+    var b = 20;
+
+    function bar(c) {
+        var d = 30;
+        return boop(x + a + b + c + d);
+    }
+    function boop(e) {
+        return e * -1;
+    }
+    return bar;
+}
+
+var moar = foo(5); // Closure  
+moar(15); 
+</code></pre>
         </section>
 
         <section>
@@ -157,29 +216,45 @@ var add10 = makeAdder(10);
         </section>
 
         <section>
-            <h2>Closures with Objects</h2>
-            <p>This also works if you are returning an object with methods.</p>
-<pre><code class="hljs" data-trim contenteditable>
-function counter() {
-    var n = 0;
-    return {
-        count: function() { return ++n; };
-        reset: function() { return n = 0; };
-    };
-}
-var myCounter = counter();
+            <h2>Puppy Builder: Exercise</h2>
+            <p>Build this a new root folder and HTML file</p>
+            <img src="img/closures.png" alt="Closure Practice" width="500px" /><br/>
+            <img src="img/exercise.gif" alt="Exercise time" />
+        </section>
+
+        <section>
+            <h2>Puppy Builder: Exercise</h2>
+            <p>Turn this JS into a closure and uses the user's input</p>
+<pre><code>
+$(document).ready(function(){
+
+    function buildADog(){
+        var dogName = "Coach";
+
+        function dogFactory(){
+            alert(dogName);
+        }
+        dogFactory();
+    }
+
+    $("#builddog").on("click", function(){
+        buildADog();
+    });
+});  
 </code></pre>
         </section>
 
         <section>
-            <h2>Exercise</h2>
-            <p>Puppy Builder</p>
+            <h2>Exercise: Password Validator</h2>
+            <p>Create the following UI using Flexbox and Bootstrap</p>
+            <img src="img/password.png" alt="User login screen" width="500px">
         </section>
 
         <section>
-            <h2>Exercise</h2>
-            <p>Password Validator</p>
-            <img src="img/password.png" alt="User login screen" width="500px">
+            <h2>Exercise: Password Validator</h2>
+            <p>Create a function in your JavaScript that tests to see if the two passwords match.</p>
+            <p>Let the user know if the passwords match and they were successful, or if they entered mis-matched passwords.</p>
+            <img src="img/exercise.gif" alt="Exercise time" />
         </section>
 
         <section>
@@ -206,12 +281,17 @@ var myCounter = counter();
 
         <section>
             <h2>Event listeners! (clicks, etc)</h2>
-            <img src="img/event.png" alt="jQuery Event Listener">
+<pre><code>
+$(".header-section").on("click", function() {
+    console.log("Header clicked!");
+})
+</code></pre>
         </section>
 
         <section>
             <h2>What is a callback?</h2>
-            <p>In JavaScript, functions are first-class objects. One of the consequences of this fact is that functions can be passed as arguments to other functions and can also be returned by other functions.</p>
+            <p>In JavaScript, functions can be passed as arguments to other functions and can also be returned by other functions.</p>
+            <img src="img/inputoutput.gif" alt="Machine Input Output">
         </section>
 
         <section>
@@ -281,11 +361,6 @@ publish("10 Tips for JavaScript Developers", "Jane Doe", articles);
         </section>
 
         <section>
-            <h2>Callback If Statements</h2>
-            <img src="img/ifstatement.png" alt="Callback Example">
-        </section>
-
-        <section>
             <h2>settimeout()</h2>
             <p>This is a tool that helps mimic the time it takes data to travel or program to execute</p>
             <p>Sets a timer which executes a function or specified piece of code once after the timer expires.
@@ -338,6 +413,8 @@ speakOrders ({name:"Minion1031", speciality:"Scribe"}, reportOrders);
                     <li> a person's name (string).</li>
                 </ol>  
             <p>The code should log to the console the sentence "[Person's name] is finer than fine wine. Altruistic and noble for the modern time".</p>  
+            <img src="img/exercise.gif" alt="Exercise time" />
+
         </section>
 
         <section>
@@ -349,6 +426,28 @@ speakOrders ({name:"Minion1031", speciality:"Scribe"}, reportOrders);
                 <li>a callback</li>
             </ol>
             <p>This function should concatenate the names and execute the poemMaker functions as a callback.</p>
+            <img src="img/exercise.gif" alt="Exercise time" />
+
+        </section>
+
+        <section>
+            <h2>Explain this code</h2>
+<pre><code>
+function myWorkout(exercise1, exercise2, callback) {
+    alert('Started my workout. Today my workout includes ' + exercise1+ ' and ' + exercise2);
+    callback();
+}
+
+myWorkout('paused squats', 'lunges', function() {
+    alert('Finished my workout!');
+});
+</code></pre>
+        </section>
+
+        <section>
+            <h2>Dev Tools</h2>
+            <p>Let's level up the dev tools</p>
+            <p>Click <a href="Slides: http://anniecannons.github.io/dev-tools">here</a></p>
         </section>
 
         <section style="text-align: left;">
