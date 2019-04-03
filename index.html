@@ -452,6 +452,23 @@ myWorkout('paused squats', 'lunges', function() {
         </section>
 
         <section>
+            <h2>Callback Exericse: Homework Time</h2>
+            <ul>
+                <li>Create a another callback function for the following code, and call it!</li>
+            </ul>
+<pre><code>
+function doHomework(subject, callback) {
+    alert(`Starting my ${subject} homework.`);
+    callback();
+}
+function alertFinished(){
+    alert('Finished my homework');
+}
+doHomework('math', alertFinished);
+</code></pre>
+        </section>
+
+        <section>
             <h2>Dev Tools</h2>
             <p>Let's level up the dev tools</p>
             <p>Click <a href="http://anniecannons.github.io/dev-tools">here</a></p>
