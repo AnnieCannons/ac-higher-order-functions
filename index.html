@@ -53,7 +53,7 @@
             <p>We have covered this: it is global and local!</p>
         </section>
 
-        <section>
+        <!-- <section>
             <h2>Lexical Scope</h2>
             <pre><code class="hljs" data-trim contenteditable>
 function init() {
@@ -266,23 +266,28 @@ $(document).ready(function(){
         <section>
             <h2>More Examples of Closures</h2>
             <a href="https://www.sitepoint.com/demystifying-javascript-closures-callbacks-iifes/">Sitepoint</a>
-        </section>
+        </section>-->
 
         <section>
             <h2>Scopes and Closures</h2>
             <p>Our friend Kyle Simpson</p>
             <p><a href="https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch1.md">Textbook</a></p>
             <p><a href="https://www.youtube.com/watch?v=nRZri_CHqnA">Video</a></p>
-        </section>
+        </section> 
 
         <section>
             <h2>High-Order Functions</h2>
             <p class="fragment">A high-order function is one that either:</p>
             <ul>
                 <li class="fragment">takes a function as an input (argument)</li>
-                <li class="fragment">returns a function as the output. </li>
+                <li class="fragment">returns a function as the output. These are called closures and we will learn more about them later </li>
             </ul>
-            <p class="fragment">We have done a lot of #2 with closures. We are going to talk about number 1. We have done this before. Anyone remember? </p>
+            <p class="fragment">We will be working a lot with #1. Who can remember what it is called when a function takes in another function as an argument?</p>
+        </section>
+
+        <section>
+            <h2>Callbacks!</h2>
+            <p>What are some examples of times we have already used callbacks?</p>
         </section>
 
         <section>
@@ -329,8 +334,12 @@ fullName("Henry", "Goulding", greeting);
         <section>
             <h2>Another Example</h2>
 <pre><code class="hljs" data-trim contenteditable>
-var increment = function(n){ return n + 1; };
-var square = function(n) { return n*n; };
+var increment = function(n){ 
+    return n + 1; 
+};
+var square = function(n) {
+    return n*n; 
+};
 
 var doMathSoIDontHaveTo = function (n, func){
     return func(n);
@@ -380,10 +389,10 @@ setTimeout(hello, 3000)
 </code></pre>
         </section>
 
-        <section>
+        <!-- <section>
             <h2>Callback with a Closure</h2>
             <img src="img/async.png" alt="Higher Order Functions">
-        </section>
+        </section> -->
 
         <section>
             <h2>Explain this code: with minions!</h2>
@@ -410,7 +419,7 @@ speakOrders ({name:"Minion1031", speciality:"Scribe"}, reportOrders);
 
         <section>
             <h2>More Callbacks with Minions</h2>
-            <p><a href="https://medium.freecodecamp.org/javascript-callbacks-explained-using-minions-da272f4d9bcd">Click here</a></p>
+            <p><a href="https://medium.freecodecamp.org/javascript-callbacks-explained-using-minions-da272f4d9bcd" target="_blank">Click here</a></p>
         </section>
 
         <section>
