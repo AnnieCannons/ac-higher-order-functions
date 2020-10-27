@@ -266,7 +266,7 @@ $(document).ready(function(){
         <section>
             <h2>More Examples of Closures</h2>
             <a href="https://www.sitepoint.com/demystifying-javascript-closures-callbacks-iifes/">Sitepoint</a>
-        </section>-->
+        </section>--> 
 
         <section>
             <h2>Scopes and Closures</h2>
@@ -430,6 +430,18 @@ speakOrders ({name:"Minion1031", speciality:"Scribe"}, reportOrders);
                 </ol>  
             <p>The code should log to the console the sentence "[Person's name] is finer than fine wine. Altruistic and noble for the modern time".</p>  
             <img src="img/exercise.gif" alt="Exercise time" />
+            <aside class="notes"> 
+<pre><code>//master function:
+function poemMaker(name) {
+    console.log(name + " is finer 
+    than fine wine. 
+    Altruistic and noble for the 
+    modern time")
+}
+
+poemMaker("Coach");
+}</pre></code> 
+            </aside>
 
         </section>
 
@@ -443,10 +455,42 @@ speakOrders ({name:"Minion1031", speciality:"Scribe"}, reportOrders);
             </ol>
             <p>This function should concatenate the names and execute the poemMaker functions as a callback.</p>
             <img src="img/exercise.gif" alt="Exercise time" />
+            <aside class="notes"> 
+<pre><code>
+//master function:
+function getUserInput(firstName, lastName, callback){
+    var name = firstName + " " + lastName; 
+        callback(name);
+}
+
+//minion/helper1
+function poemMaker(name) {
+    console.log(name + " is finer than fine wine. Altruistic and noble for the modern time")
+}
+
+//minion/helper2
+function niceSentence(name){
+    console.log(name + " my hero and this compliment is for them!")
+}
+
+// poemMaker("Coach");
+
+
+
+getUserInput("Coach", "Hackney", poemMaker);
+getUserInput("Ada", "Lovelace", niceSentence);
+</pre></code> 
+                            </aside>
 
         </section>
-
+        
         <section>
+            <h2>Callbacks Exercise part 3</h2>
+            <p>How can we use <code style="color: turquoise;">getUserInput</code> to create a second sentence?</p>
+            <aside class="notes">See answer on previous slide</aside>
+        </section>
+
+        <!-- <section>
             <h2>Explain this code</h2>
 <pre><code>
 function myWorkout(exercise1, exercise2, callback) {
@@ -458,13 +502,12 @@ myWorkout('paused squats', 'lunges', function() {
     alert('Finished my workout!');
 });
 </code></pre>
-        </section>
+        </section> -->
 
-        <section>
+        <!-- <section>
             <h2>Callback Exericse: Homework Time</h2>
-            <ul>
-                <li>Create a another callback function for the following code, and call it!</li>
-            </ul>
+            <p>Create a another callback function for the following code, and call it!</p>
+
 <pre><code>
 function doHomework(subject, callback) {
     alert(`Starting my ${subject} homework.`);
@@ -475,13 +518,13 @@ function alertFinished(){
 }
 doHomework('math', alertFinished);
 </code></pre>
-        </section>
+        </section> -->
 
-        <section>
+        <!-- <section>
             <h2>Dev Tools</h2>
             <p>Let's level up the dev tools</p>
-            <p>Click <a href="http://anniecannons.github.io/dev-tools">here</a></p>
-        </section>
+            <p>Click <a href="http://anniecannons.github.io/dev-tools" target="_blank">here</a></p>
+        </section> -->
 
         <section style="text-align: left;">
             <h1>THE END</h1>
