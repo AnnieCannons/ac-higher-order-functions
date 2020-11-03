@@ -15,6 +15,8 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
+    <link rel="icon" type="image/png" href="img/AC_Asterisk.png">
+      
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/league.css" id="theme">
 
@@ -271,18 +273,27 @@ $(document).ready(function(){
         <section>
             <h2>Scopes and Closures</h2>
             <p>Our friend Kyle Simpson</p>
-            <p><a href="https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch1.md">Textbook</a></p>
-            <p><a href="https://www.youtube.com/watch?v=nRZri_CHqnA">Video</a></p>
+            <p><a href="https://github.com/getify/You-Dont-Know-JS" target="_blank">Textbook</a></p>
+            <p><a href="https://www.youtube.com/watch?v=nRZri_CHqnA" target="_blank">Video</a></p>
         </section> 
 
         <section>
-            <h2>High-Order Functions</h2>
+            <h2>Higher-Order Functions</h2>
             <p class="fragment">A high-order function is one that either:</p>
             <ul>
                 <li class="fragment">takes a function as an input (argument)</li>
                 <li class="fragment">returns a function as the output. These are called closures and we will learn more about them later </li>
             </ul>
             <p class="fragment">We will be working a lot with #1. Who can remember what it is called when a function takes in another function as an argument?</p>
+        </section>
+
+        <section>
+            <h2>Higher-Order Functions Visually</h2>
+            <img data-enlargable 
+            height="300" 
+            style="border: 5px solid blue; cursor: zoom-in; height: 550px" 
+            src="/img/higher-order-functions.png" alt="Higher oder functions explained visually, showing you can have a function as an input, or an output">
+            
         </section>
 
         <section>
@@ -334,18 +345,18 @@ fullName("Henry", "Goulding", greeting);
         <section>
             <h2>Another Example</h2>
 <pre><code class="hljs" data-trim contenteditable>
-var increment = function(n){ 
+var increment = function(n){ //function declaration
     return n + 1; 
 };
-var square = function(n) {
+var square = function(n) { //function declaration
     return n*n; 
 };
 
-var doMathSoIDontHaveTo = function (n, func){
+var doMathSoIDontHaveTo = function (n, func){ //higher order function
     return func(n);
 };
-doMathSoIDontHaveTo(5, square);
-doMathSoIDontHaveTo(4, increment);
+doMathSoIDontHaveTo(5, square); //takes the square function in as an argument
+doMathSoIDontHaveTo(4, increment); //takes the increment function in as an argument
 </code></pre>
         </section>
 
@@ -380,8 +391,7 @@ publish("10 Tips for JavaScript Developers", "Jane Doe", articles);
             <h2>settimeout()</h2>
             <p>This is a tool that helps mimic the time it takes data to travel or program to execute</p>
             <p>Sets a timer which executes a function or specified piece of code once after the timer expires.
-<pre><code class="js">setTimeout()
-//
+<pre><code class="js">//setTimeout()
 function hello(){
     alert("Hello!")
 }
