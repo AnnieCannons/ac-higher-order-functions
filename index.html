@@ -50,234 +50,6 @@
         </section>
         
         <section>
-            <h2>Let's Review Scope</h2>
-            <p>The scope of a variabe or function is defined by its location within the source code (it is apparent lexically) and nested functions have access to variable declared in their outer scope.</p>
-            <p>We have covered this: it is global and local!</p>
-        </section>
-
-        <!-- <section>
-            <h2>Lexical Scope</h2>
-            <pre><code class="hljs" data-trim contenteditable>
-function init() {
-    var name = "Mozilla"; //name is a local variable created by init
-    function displayName() { //displayName() is the inner function, a closure
-        alert(name);
-    }
-    displayName();
-}
-init();
-        </code></pre>
-        </section>
-
-        <section>
-            <h2>Introduction to closures!</h2>
-            <p>You can go through more of these concepts in this document</p>
-            <p><a href="https://medium.freecodecamp.com/lets-learn-javascript-closures-66feb44f6a44#.sh60kj2ai">Click here</a></p>
-        </section>
-
-        <section>
-            <h2>What is a closure?</h2>
-            <p>Closures are functions that refer to independent (free) variables. In other words, the function defined in the closure ‘remembers’ the environment in which it was created.</p>
-            <p class="fragment">A closure is created when an inner function is made accessible from outside of the function that created it. This typically occurs when an outer function returns an inner function.</p>
-            <p class="fragment">This means that it remembers all of the variables (and their values) that were in scope at the time.</p>
-        </section>
-
-        <section>
-            <h2>Seriously, what?</h2>
-            <img src="img/pardon.gif" alt="Pardon Me?">
-        </section>
-
-        <section>
-            <h2>Closures</h2>
-            <p>Closures have many practical use cases. One important use case is to maintain a private reference to a variable in the outer scope.</p>
-            <p>We can use closures to make only certain things in our function accessible by other parts of our program.</p>
-        </section>
-
-        <section>
-            <h2>Examples!</h2>
-<pre><code>
-function numberGenerator() {
-    // Local “free” variable that ends up within the closure
-    var num = 1;
-    function checkNumber() { 
-        console.log(num);
-    }
-    num++;
-    return checkNumber;
-}
-    
-var number = numberGenerator();
-number(); // 2
-</code></pre>
-        </section>
-
-        <section>
-            <h2>Closures</h2>
-            <p>Often closures are created when a function is the <span>output</span> on another function</p>
-<pre><code>
-function sayHello() {
-    var say = function() { console.log(hello); }
-    // Local variable that ends up within the closure 
-    var hello = 'Hello, world!';
-    return say;
-}
-var sayHelloClosure = sayHello(); 
-sayHelloClosure(); // ‘Hello, world!’
-</code></pre>
-        </section>
-
-        <section>
-            <h2>Explaining the code</h2>
-            <p>In the example above, the function numberGenerator creates a local “free” variable num (a number) and checkNumber (a function which prints num to the console). </p><p>The function checkNumber doesn’t have any local variables of its own — however, it does have access to the variables within the outer function, numberGenerator, because of a closure. <p>Therefore, it can use the variable num declared in numberGenerator to successfully log it to the console even after numberGenerator has returned.</p>
-        </section>
-
-        <section>
-            <h2>Let's talk about this function</h2>
-            <pre><code class="hljs" data-trim contenteditable>
-function sayHello2(name){
-    var text = 'Hello ' + name; //Local variable
-    var say = function() {
-        console.log(text)
-    }
-    return say;
-}
-var say2 = sayHello2('Bob');
-say2(); // logs "Hello Bob"
-        </code></pre>
-        </section>
-
-        <section>
-            <h2>Another example</h2>
-<pre><code>var x = 10;
-function foo(a) {
-    var b = 20;
-
-    function bar(c) {
-        var d = 30;
-        return boop(x + a + b + c + d);
-    }
-    function boop(e) {
-        return e * -1;
-    }
-    return bar;
-}
-
-var moar = foo(5); // Closure  
-moar(15); 
-</code></pre>
-        </section>
-
-        <section>
-            <h2>Scopes and Closures</h2>
-            <pre><code class="hljs" data-trim contenteditable>
-function add(value1){
-    return function doAdd(value2){
-        return value1 + value2;
-    };
-}
-
-var increment = add(1);
-var foo = increment(2);
-//foo equal 3
-        </code></pre>  
-            <p>The add() function returns its inner function doAdd(). By returning a reference to an inner function, a closure is created.</p>
-        </section>
-
-        <section>
-            <h2>Scopes and Closures</h2>
-            <p>Things to Remember</p>
-            <ul>
-                <li>The previous code has a closure because the anonymous function is declared inside another function. In JS, if you use the function keyword inside another function, you are creating a closure.</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Scopes and Closures</h2>
-            <p>Cake Example</p>
-            <img src="img/cake.jpg" alt="Cake Image" width="500px">
-        </section>
-
-        <section>
-            <h2>Scopes and Closures</h2>
-            <p>Cake Example Explained</p>
-            <p>If I am making a cake in my kitchen, I use all kind of tools and ingredients, but the only output that you see is the cake I make for you. You don’t have access to all the things in my kitchen but the cake has access to all the properties that made it (when it was being created in the kitchen)</p>            
-        </section>
-
-        <section>
-            <h2>Scopes and Closures</h2>
-            <pre><code class="hljs" data-trim contenteditable>
-function nameAdder(x){
-    return function(y){
-        return x + y;
-    };
-}
-
-var add5 = makeAdder(5);
-var add10 = makeAdder(10);
-        </code></pre>
-        <p>Console log these variables</p>
-        </section>
-
-        <section>
-            <h2>Review the Recipe</h2>
-            <img src="img/recipe.png" alt="Steps for creating a closure">
-        </section>
-
-        <section>
-            <h2>Puppy Builder: Exercise</h2>
-            <p>Build this a new root folder and HTML file</p>
-            <img src="img/closures.png" alt="Closure Practice" width="500px" /><br/>
-            <img src="img/exercise.gif" alt="Exercise time" />
-        </section>
-
-        <section>
-            <h2>Puppy Builder: Exercise</h2>
-            <p>Turn this JS into a closure and uses the user's input</p>
-<pre><code>
-$(document).ready(function(){
-
-    function buildADog(){
-        var dogName = "Coach";
-
-        function dogFactory(){
-            alert(dogName);
-        }
-        dogFactory();
-    }
-
-    $("#builddog").on("click", function(){
-        buildADog();
-    });
-});  
-</code></pre>
-        </section>
-
-        <section>
-            <h2>Exercise: Password Validator</h2>
-            <p>Create the following UI using Flexbox and Bootstrap</p>
-            <img src="img/password.png" alt="User login screen" width="500px">
-        </section>
-
-        <section>
-            <h2>Exercise: Password Validator</h2>
-            <p>Create a function in your JavaScript that tests to see if the two passwords match.</p>
-            <p>Let the user know if the passwords match and they were successful, or if they entered mis-matched passwords.</p>
-            <img src="img/exercise.gif" alt="Exercise time" />
-        </section>
-
-        <section>
-            <h2>More Examples of Closures</h2>
-            <a href="https://www.sitepoint.com/demystifying-javascript-closures-callbacks-iifes/">Sitepoint</a>
-        </section>--> 
-
-        <section>
-            <h2>Scopes and Closures</h2>
-            <p>Our friend Kyle Simpson</p>
-            <p><a href="https://github.com/getify/You-Dont-Know-JS" target="_blank">Textbook</a></p>
-            <p><a href="https://www.youtube.com/watch?v=nRZri_CHqnA" target="_blank">Video</a></p>
-        </section> 
-
-        <section>
             <h2>Higher-Order Functions</h2>
             <p class="fragment">A high-order function is one that either:</p>
             <ul>
@@ -500,7 +272,7 @@ getUserInput("Ada", "Lovelace", niceSentence);
             <aside class="notes">See answer on previous slide</aside>
         </section>
 
-        <!-- <section>
+         <section>
             <h2>Explain this code</h2>
 <pre><code>
 function myWorkout(exercise1, exercise2, callback) {
@@ -512,9 +284,9 @@ myWorkout('paused squats', 'lunges', function() {
     alert('Finished my workout!');
 });
 </code></pre>
-        </section> -->
+        </section> 
 
-        <!-- <section>
+        <section>
             <h2>Callback Exericse: Homework Time</h2>
             <p>Create a another callback function for the following code, and call it!</p>
 
@@ -528,13 +300,241 @@ function alertFinished(){
 }
 doHomework('math', alertFinished);
 </code></pre>
-        </section> -->
-
-        <!-- <section>
+        </section>
+        
+        <section>
             <h2>Dev Tools</h2>
-            <p>Let's level up the dev tools</p>
+            <p>Let's refresh our dev tools skills!</p>
             <p>Click <a href="http://anniecannons.github.io/dev-tools" target="_blank">here</a></p>
-        </section> -->
+        </section> 
+        
+        <section>
+            <h2>Let's Review Scope</h2>
+            <p>The scope of a variabe or function is defined by its location within the source code (it is apparent lexically) and nested functions have access to variable declared in their outer scope.</p>
+            <p>We have covered this: it is global and local!</p>
+        </section>
+
+        <section>
+            <h2>Lexical Scope</h2>
+            <pre><code class="hljs" data-trim contenteditable>
+function init() {
+    var name = "Mozilla"; //name is a local variable created by init
+    function displayName() { //displayName() is the inner function, a closure
+        alert(name);
+    }
+    displayName();
+}
+init();
+        </code></pre>
+        </section>
+
+        <section>
+            <h2>Scopes and Closures</h2>
+            <p>Our friend Kyle Simpson</p>
+            <p><a href="https://github.com/getify/You-Dont-Know-JS" target="_blank">Textbook</a></p>
+            <p><a href="https://www.youtube.com/watch?v=nRZri_CHqnA" target="_blank">Video</a></p>
+        </section> 
+
+        <section>
+            <h2>Introduction to closures!</h2>
+            <p>You can go through more of these concepts in this document</p>
+            <p><a href="https://medium.freecodecamp.com/lets-learn-javascript-closures-66feb44f6a44#.sh60kj2ai">Click here</a></p>
+        </section>
+
+        <section>
+            <h2>What is a closure?</h2>
+            <p>Closures are functions that refer to independent (free) variables. In other words, the function defined in the closure ‘remembers’ the environment in which it was created.</p>
+            <p class="fragment">A closure is created when an inner function is made accessible from outside of the function that created it. This typically occurs when an outer function returns an inner function.</p>
+            <p class="fragment">This means that it remembers all of the variables (and their values) that were in scope at the time.</p>
+        </section>
+
+        <section>
+            <h2>Seriously, what?</h2>
+            <img src="img/pardon.gif" alt="Pardon Me?">
+        </section>
+
+        <section>
+            <h2>Closures</h2>
+            <p>Closures have many practical use cases. One important use case is to maintain a private reference to a variable in the outer scope.</p>
+            <p>We can use closures to make only certain things in our function accessible by other parts of our program.</p>
+        </section>
+
+        <section>
+            <h2>Examples!</h2>
+<pre><code>
+function numberGenerator() {
+    // Local “free” variable that ends up within the closure
+    var num = 1;
+    function checkNumber() { 
+        console.log(num);
+    }
+    num++;
+    return checkNumber;
+}
+    
+var number = numberGenerator();
+number(); // 2
+</code></pre>
+        </section>
+
+        <section>
+            <h2>Closures</h2>
+            <p>Often closures are created when a function is the <span>output</span> on another function</p>
+<pre><code>
+function sayHello() {
+    var say = function() { console.log(hello); }
+    // Local variable that ends up within the closure 
+    var hello = 'Hello, world!';
+    return say;
+}
+var sayHelloClosure = sayHello(); 
+sayHelloClosure(); // ‘Hello, world!’
+</code></pre>
+        </section>
+
+        <section>
+            <h2>Explaining the code</h2>
+            <p>In the example above, the function numberGenerator creates a local “free” variable num (a number) and checkNumber (a function which prints num to the console). </p><p>The function checkNumber doesn’t have any local variables of its own — however, it does have access to the variables within the outer function, numberGenerator, because of a closure. <p>Therefore, it can use the variable num declared in numberGenerator to successfully log it to the console even after numberGenerator has returned.</p>
+        </section>
+
+        <section>
+            <h2>Let's talk about this function</h2>
+            <pre><code class="hljs" data-trim contenteditable>
+function sayHello2(name){
+    var text = 'Hello ' + name; //Local variable
+    var say = function() {
+        console.log(text)
+    }
+    return say;
+}
+var say2 = sayHello2('Bob');
+say2(); // logs "Hello Bob"
+        </code></pre>
+        </section>
+
+        <section>
+            <h2>Another example</h2>
+<pre><code>var x = 10;
+function foo(a) {
+    var b = 20;
+
+    function bar(c) {
+        var d = 30;
+        return boop(x + a + b + c + d);
+    }
+    function boop(e) {
+        return e * -1;
+    }
+    return bar;
+}
+
+var moar = foo(5); // Closure  
+moar(15); 
+</code></pre>
+        </section>
+
+        <section>
+            <h2>Scopes and Closures</h2>
+            <pre><code class="hljs" data-trim contenteditable>
+function add(value1){
+    return function doAdd(value2){
+        return value1 + value2;
+    };
+}
+
+var increment = add(1);
+var foo = increment(2);
+//foo equal 3
+        </code></pre>  
+            <p>The add() function returns its inner function doAdd(). By returning a reference to an inner function, a closure is created.</p>
+        </section>
+
+        <section>
+            <h2>Scopes and Closures</h2>
+            <p>Things to Remember</p>
+            <ul>
+                <li>The previous code has a closure because the anonymous function is declared inside another function. In JS, if you use the function keyword inside another function, you are creating a closure.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Scopes and Closures</h2>
+            <p>Cake Example</p>
+            <img src="img/cake.jpg" alt="Cake Image" width="500px">
+        </section>
+
+        <section>
+            <h2>Scopes and Closures</h2>
+            <p>Cake Example Explained</p>
+            <p>If I am making a cake in my kitchen, I use all kind of tools and ingredients, but the only output that you see is the cake I make for you. You don’t have access to all the things in my kitchen but the cake has access to all the properties that made it (when it was being created in the kitchen)</p>            
+        </section>
+
+        <section>
+            <h2>Scopes and Closures</h2>
+            <pre><code class="hljs" data-trim contenteditable>
+function nameAdder(x){
+    return function(y){
+        return x + y;
+    };
+}
+
+var add5 = makeAdder(5);
+var add10 = makeAdder(10);
+        </code></pre>
+        <p>Console log these variables</p>
+        </section>
+
+        <section>
+            <h2>Review the Recipe</h2>
+            <img src="img/recipe.png" alt="Steps for creating a closure">
+        </section>
+
+        <section>
+            <h2>Puppy Builder: Exercise</h2>
+            <p>Build this a new root folder and HTML file</p>
+            <img src="img/closures.png" alt="Closure Practice" width="500px" /><br/>
+            <img src="img/exercise.gif" alt="Exercise time" />
+        </section>
+
+        <section>
+            <h2>Puppy Builder: Exercise</h2>
+            <p>Turn this JS into a closure and uses the user's input</p>
+<pre><code>
+$(document).ready(function(){
+
+    function buildADog(){
+        var dogName = "Coach";
+
+        function dogFactory(){
+            alert(dogName);
+        }
+        dogFactory();
+    }
+
+    $("#builddog").on("click", function(){
+        buildADog();
+    });
+});  
+</code></pre>
+        </section>
+
+        <section>
+            <h2>Exercise: Password Validator</h2>
+            <p>Create the following UI using Flexbox and Bootstrap</p>
+            <img src="img/password.png" alt="User login screen" width="500px">
+        </section>
+
+        <section>
+            <h2>Exercise: Password Validator</h2>
+            <p>Create a function in your JavaScript that tests to see if the two passwords match.</p>
+            <p>Let the user know if the passwords match and they were successful, or if they entered mis-matched passwords.</p>
+            <img src="img/exercise.gif" alt="Exercise time" />
+        </section>
+
+        <section>
+            <h2>More Examples of Closures</h2>
+            <a href="https://www.sitepoint.com/demystifying-javascript-closures-callbacks-iifes/">Sitepoint</a>
+        </section>
 
         <section style="text-align: left;">
             <h1>THE END</h1>
