@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>AnnieCannons slides</title>
+    <title>AnnieCannons Higher-Order Functions slides</title>
 
     <meta name="description" content="AnnieCannons class slides">
     <meta name="author" content="AnnieCannons">
@@ -48,50 +48,107 @@
         <section>
             <h2>Higher-Order Functions in JavaScript</h2>
         </section>
+
+        <section>
+            <h2>Higher-Order Functions<br>Review Study Guide</h2>
+            <p>
+              Click
+              <a
+                href="https://docs.google.com/document/d/1VvenHUR8SK1DC9qvL-42JOuUscKVpmbP1ZxipesF79Y/edit?usp=sharing"
+                target="_blank"
+                >here</a
+              >
+              to view and make a copy for reference.
+            </p>
+          </section>
         
         <section>
             <h2>Higher-Order Functions</h2>
-            <p class="fragment">A high-order function is one that either:</p>
-            <ul>
-                <li class="fragment">takes a function as an input (argument)</li>
-                <li class="fragment">returns a function as the output. These are called closures and we will learn more about them later </li>
-            </ul>
-            <p class="fragment">We will be working a lot with #1. Who can remember what it is called when a function takes in another function as an argument?</p>
+            <p class="fragment">A <span style="color:yellow;">high-order function</span> is a function that either:</p>
+            <ol>
+                <li class="fragment">takes a function as an input (argument). We've seen these before!</li>
+                <li class="fragment">returns a function as the output. Functions that are returned from a function are called <span style="color: yellow;">closures</span>, and we will learn more about them later.</li>
+            </ol>
+            <p class="fragment">We will work with #1 before we get to closures.</p>
+            <p class="fragment">Q: Do you remember what a function that is an argument for a function is called? <span class="fragment">Yes, a <span style="color: yellow;">callback</span>!</span> </p>
+            <p class="fragment">Q: Do you remember when you've seen callbacks before?<br><span class="fragment">Yes, in jQuery!</span></p>
         </section>
 
         <section>
             <h2>Higher-Order Functions Visually</h2>
             <img data-enlargable 
-            height="300" 
-            style="border: 5px solid blue; cursor: zoom-in; height: 550px" 
-            src="/img/higher-order-functions.png" alt="Higher oder functions explained visually, showing you can have a function as an input, or an output">
-            
+            width="300" 
+            style="border: 5px solid blue; cursor: zoom-in;" 
+            src="img/higher-order-functions.png" alt="Higher oder functions explained visually, showing you can have a function as an input, or an output">
+            <p>Q: What kind of function is on the upper left corner of this picture? <span class="fragment">Yes, a <span style="color:yellow;">callback</span>!</span></p>
+            <p>Q: What kind of function is at the bottom right corner of this picture? <span class="fragment">Yes, a <span style="color:yellow;">closure</span>!</span></p>
+            <p>Q: What kind of function is at the center of this picture?<br><span class="fragment">Yes, a <span style="color:yellow;">higher-order function</span>!</span></p>
         </section>
 
         <section>
-            <h2>Callbacks!</h2>
-            <p>What are some examples of times we have already used callbacks?</p>
+            <h2>Callbacks</h2>
         </section>
 
         <section>
-            <h2>Event listeners! (clicks, etc)</h2>
-<pre><code>
-$(".header-section").on("click", function() {
-    console.log("Header clicked!");
-})
+            <h2>Callbacks</h2>
+            <p>What are some examples of times<br>we have already used callbacks?</p>
+<pre><code class="js" data-trim contenteditable>
+//Examples:
 </code></pre>
         </section>
 
         <section>
+            <h2>Event listeners!</h2>
+            <p>Yes, when a program listens for events to execute code!<br>Event listeners often handle DOM and/or user input!</p>
+            <p>Can you think of some examples of inputs?</p>
+            <ul>
+                <li>DOM input: <span class="fragment">when the document is "ready" to accept functions.</span></li>
+                <li class="fragment">user input: when functions are accepted when a user <span class="fragment">clicks, scrolls, mouses over, presses a key, submits info, etc.</span></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Event Listeners</h2>
+            <img data-enlargable 
+            width="300" 
+            style="border: 5px solid blue; cursor: zoom-in;" 
+            src="img/higher-order-functions.png" alt="Higher oder functions explained visually, showing you can have a function as an input, or an output">
+            <p>Referring to the image above, what kind of functions are event listeners?</p>
+            <p class="fragment">Awesome sleuthing! Event listeners are functions that accept functions as input. Event listeners are therefore higher-order functions!</p>
+            <p class="fragment">If event listeners are higher-order functions, what kind of functions do they accept as input? <span class="fragment">Yes, they accept <span style="color: yellow;">callbacks</span>!</span>
+        </section>
+
+        <section>
+            <h2>Callback Example</h2>
+            <p>Now let's see a <span style="color: yellow;">callback</span> in action in our code!<br>Can you explain the following lines of code?</p>
+<pre><code class="js" data-trim contenteditable>
+$(".header-section").on("click", function() {
+    console.log("Header clicked!");
+})
+</code></pre>
+            <div class="fragment">
+                <p>In the above lines of code, can you identify:</p>
+                     <ul>
+                         <li>All the functions (Hint: there are 3.)</li>
+                         <li>Which function is an argument? What do we call this function?</li>
+                         <li>Which function is therefore a higher-order function?</li>
+                     </ul>
+            </div>
+        </section>
+
+        <section>
             <h2>What is a callback?</h2>
-            <p>In JavaScript, functions can be passed as arguments to other functions and can also be returned by other functions.</p>
+            <p>In JavaScript, functions can be passed as arguments to other functions -- these are <span class="fragment" style="color: yellow;">callbacks</span>, inputs!</p>
+            <p>Functions can also be returned by other functions --<br>these are <span class="fragment" style="color: yellow;">closures</span>, outputs! More on this later.</p>
             <img src="img/inputoutput.gif" alt="Machine Input Output">
         </section>
 
         <section>
             <h2>Callbacks</h2>
-            <p class="fragment">A function that takes other functions as arguments or returns functions as its result is called a higher-order function, and the function that is passed as an argument is called a callback function. It’s named “callback” because at some point in time it is “called back” by the higher-order function.</p>
-            <p class="fragment">They are great with Event Listeners!</p>
+            <p class="fragment">A function that takes other functions as arguments or returns functions as its result is called a <span style="color: yellow;">higher-order function</span>.</p>
+            <p class="fragment">The function that is passed as an argument<br>is called a <span style="color:yellow;">callback</span>.</p>
+            <p class="fragment">This function is named a “callback” because at some point in time it is “called back” by the higher-order function.</p>
+            <p class="fragment">Callbacks are great with Event Listeners!</p>
         </section>
 
         <section>
@@ -101,31 +158,81 @@ $(".header-section").on("click", function() {
         <section>
             <h2>Example of using a callback</h2>
 <pre><code class="hljs" data-trim contenteditable>
-function fullName(firstName, lastName, callback){
+function fullName(firstName, lastName, callback) {
   console.log("My name is " + firstName + " " + lastName);
   callback(lastName);
 }
 
-var greeting = function(ln){
-  console.log('Welcome Mr. ' + ln);
+function greeting(ln) {
+  console.log('Welcome, Mr. ' + ln);
 };
 
-fullName("Henry", "Goulding", greeting);
+fullName("Henry", "Golding", greeting);
 </code></pre>
+        <aside class="notes">
+//Here's another way to pass in another greeting function.
+function fullName(firstName, lastName, callback) {
+  console.log("My name is " + firstName + " " + lastName);
+  callback(lastName);
+}
+function greetingNightTime(ln) {
+  console.log('Good Night, Mr. ' + ln);
+};
+
+function greetingDayTime(ln) {
+  console.log('Good Morning! Mr. ' + ln);
+};
+
+fullName("Henry", "Goulding", greetingNightTime);
+fullName("Barack", "Obama", greetingNightTime);
+        </aside>
+        </section>
+
+        <section>
+            <h2>Example of a callback - Refactored</h2>
+            <p>You saw a function declaration on the slide before. Below is the function declaration refactored as a function expression.</p>
+<pre><code class="hljs" data-trim contenteditable>
+function fullName(firstName, lastName, callback) {
+  console.log("My name is " + firstName + " " + lastName);
+  callback(lastName);
+}
+
+var greeting = function(ln) {
+  console.log('Welcome, Mr. ' + ln);
+};
+
+fullName("Henry", "Golding", greeting);
+</code></pre>
+        <p class="fragment">Can you add a farewell function?</p>
+        <p class="fragment">How do you pass in the farewell function?</p>
+        <aside class="notes">
+            function fullName(firstName, lastName, callback) {
+            console.log("My name is " + firstName + " " + lastName);
+            callback(lastName);
+            }
+            function greeting(ln) {
+            console.log('Welcome, Mr. ' + ln);
+            };
+            function farewell(ln) {
+            console.log('Take care, Mr. ' + ln);
+            };
+            fullName("Henry", "Goulding", greetingNightTime);
+            fullName("Barack", "Obama", greetingNightTime);
+                    </aside>
         </section>
 
         <section>
             <h2>Another Example</h2>
 <pre><code class="hljs" data-trim contenteditable>
-var increment = function(n){ //function declaration
-    return n + 1; 
+var increment = function(n) { //function expression
+  return n + 1; 
 };
-var square = function(n) { //function declaration
-    return n*n; 
+var square = function(n) { //function expression
+  return n*n; 
 };
 
-var doMathSoIDontHaveTo = function (n, func){ //higher order function
-    return func(n);
+var doMathSoIDontHaveTo = function (n, func){ //higher-order function
+  return func(n);
 };
 doMathSoIDontHaveTo(5, square); //takes the square function in as an argument
 doMathSoIDontHaveTo(4, increment); //takes the increment function in as an argument
@@ -135,19 +242,18 @@ doMathSoIDontHaveTo(4, increment); //takes the increment function in as an argum
         <section>
             <h2>Another Example</h2>
 <pre><code class="hljs" data-trim contenteditable>
-function publish(item, author, callback){   // Generic function with common data
+function publish(item, author, callback) {   // Generic function with common data
   console.log(item);
   var date = new Date();
-
   callback(author, date);
 }
 
-function messages(author, time){   // Callback function with specific data
+function messages(author, time) {   // Callback function with specific data
   var sendTime = time.toLocaleTimeString();
   console.log("Sent from " + author + " at " + sendTime);
 }
 
-function articles(author, date){   // Callback function with specific data
+function articles(author, date) {   // Callback function with specific data
   var pubDate = date.toDateString();
   console.log("Written by " + author);
   console.log("Published " + pubDate);
@@ -161,14 +267,18 @@ publish("10 Tips for JavaScript Developers", "Jane Doe", articles);
 
         <section>
             <h2>settimeout()</h2>
-            <p>This is a tool that helps mimic the time it takes data to travel or program to execute</p>
-            <p>Sets a timer which executes a function or specified piece of code once after the timer expires.
-<pre><code class="js">//setTimeout()
+            <p>This is a tool that helps mimic the time it takes data to travel or a program to execute.</p>
+            <p>Sets a timer, which executes a function or specified piece of code once the timer expires.
+<pre><code class="js" data-trim contenteditable>//setTimeout()
 function hello(){
-    alert("Hello!")
+  alert("Hello!")
 }
+
 setTimeout(hello, 3000)
 </code></pre>
+            <p>Explain the code.</p>
+            <p>Identify the callback.</p>
+            <p>Identify the higher-order function.</p>
         </section>
 
         <!-- <section>
@@ -178,20 +288,19 @@ setTimeout(hello, 3000)
 
         <section>
             <h2>Explain this code: with minions!</h2>
-<pre><code>
+<pre><code class="js" data-trim contenteditable>
 function reportOrders (minionOrders) {
-    if ( typeof minionOrders === "string"){
-        console.log(minionOrders);
+  if ( typeof minionOrders === "string"){
+    console.log(minionOrders);
+  } else if ( typeof minionOrders === "object"){
+    for (var item in minionOrders) {
+        console.log(item + ": " + minionOrders[item]);
     }
-    else if ( typeof minionOrders === "object"){
-        for (var item in minionOrders) {
-            console.log(item + ": " + minionOrders[item]);
-        }
-    }
+  }
 }
 
 ​function speakOrders (orders, callback) {
-    callback (orders);
+  callback (orders);
 }
 ​
 speakOrders ({name:"Minion1031", speciality:"Scribe"}, reportOrders);
@@ -205,15 +314,26 @@ speakOrders ({name:"Minion1031", speciality:"Scribe"}, reportOrders);
         </section>
 
         <section>
-            <h2>Callback Exercise</h2>
+            <h2>Callback Exercise (Part 1)</h2>
             <p>Write a function, poemMaker, that takes in one parameter: 
                 <ol>
                     <li> a person's name (string).</li>
                 </ol>  
-            <p>The code should log to the console the sentence "[Person's name] is finer than fine wine. Altruistic and noble for the modern time".</p>  
-            <img src="img/exercise.gif" alt="Exercise time" />
+            <p>The code should log to the console the sentence:<br>"[Person's name] is finer than fine wine.<br>Altruistic and noble for the modern time".</p>  
+            <div style="display: flex; justify-content: center">
+                <img src="img/exercise.gif" alt="Exercise Gif" width="200px" />
+                <a
+                  href="https://trello.com/b/RQrD5Ye2/template-student-journey-phase-24-javascript"
+                  target="_blank"
+                >
+                  <img
+                    src="img/trello-logo-blue.png"
+                    alt="Trello Logo"
+                    width="200px"
+                /></a>
+              </div>
             <aside class="notes"> 
-<pre><code>//master function:
+<pre><code class="js" data-trim contenteditable>//master function:
 function poemMaker(name) {
     console.log(name + " is finer 
     than fine wine. 
@@ -235,10 +355,21 @@ poemMaker("Coach");
                 <li>lastName(string)</li>
                 <li>a callback</li>
             </ol>
-            <p>This function should concatenate the names and execute the poemMaker functions as a callback.</p>
-            <img src="img/exercise.gif" alt="Exercise time" />
+            <p>This function should concatenate the names and execute the poemMaker function as a callback.</p>
+            <div style="display: flex; justify-content: center">
+                <img src="img/exercise.gif" alt="Exercise Gif" width="200px" />
+                <a
+                  href="https://trello.com/b/RQrD5Ye2/template-student-journey-phase-24-javascript"
+                  target="_blank"
+                >
+                  <img
+                    src="img/trello-logo-blue.png"
+                    alt="Trello Logo"
+                    width="200px"
+                /></a>
+              </div>
             <aside class="notes"> 
-<pre><code>
+<pre><code class="js" data-trim contenteditable>
 //master function:
 function getUserInput(firstName, lastName, callback){
     var name = firstName + " " + lastName; 
@@ -267,14 +398,27 @@ getUserInput("Ada", "Lovelace", niceSentence);
         </section>
         
         <section>
-            <h2>Callbacks Exercise part 3</h2>
-            <p>How can we use <code style="color: turquoise;">getUserInput</code> to create a second sentence?</p>
+            <h2>Callback Exercise (Part 3)</h2>
+            <p>How can we use <code style="color: turquoise;">getUserInput</code><br>to generate a second sentence?</p>
+            <p>Example: "So altruistic and noble and fine,<br>[person's name] will be remembered for all time."</p>
+            <div style="display: flex; justify-content: center">
+                <img src="img/exercise.gif" alt="Exercise Gif" width="200px" />
+                <a
+                  href="https://trello.com/b/RQrD5Ye2/template-student-journey-phase-24-javascript"
+                  target="_blank"
+                >
+                  <img
+                    src="img/trello-logo-blue.png"
+                    alt="Trello Logo"
+                    width="200px"
+                /></a>
+              </div>
             <aside class="notes">See answer on previous slide</aside>
         </section>
 
          <section>
             <h2>Explain this code</h2>
-<pre><code>
+<pre><code class="js" data-trim contenteditable>
 function myWorkout(exercise1, exercise2, callback) {
     alert('Started my workout. Today my workout includes ' + exercise1+ ' and ' + exercise2);
     callback();
@@ -287,36 +431,80 @@ myWorkout('paused squats', 'lunges', function() {
         </section> 
 
         <section>
-            <h2>Callback Exericse: Homework Time</h2>
+            <h2>Callback Exercise: Homework Time</h2>
             <p>Create a another callback function for the following code, and call it!</p>
 
-<pre><code>
+<pre><code class="js" data-trim contenteditable>
 function doHomework(subject, callback) {
-    alert(`Starting my ${subject} homework.`);
-    callback();
+  alert('Starting my ' + subject + ' homework.');callback();
 }
-function alertFinished(){
-    alert('Finished my homework');
+function alertFinished() {
+  alert('Finished my homework');
 }
 doHomework('math', alertFinished);
 </code></pre>
         </section>
-        
+
+        <section>
+            <h2>Callbacks: Summary</h2>
+            <ul>
+                <li>So far, we've learned that <span style="color: yellow;">higher order functions</span> are functions that accept functions as input and can also return functions as output.</li>
+                <li>A function that is passed as an argument into another function is a <span style="color: yellow;">callback</span>.</li>
+                <li>A function that is returned as an output of another function is a <span style="color: yellow;">closure</span>.</li>
+            </ul>
+            <p>Congratulations! That wraps up callbacks. We are ready to start looking at closures!</p>
+        </section>
+
         <section>
             <h2>Dev Tools</h2>
-            <p>Let's refresh our dev tools skills!</p>
+            <p>First, let's refresh our dev tools skills!</p>
             <p>Click <a href="http://anniecannons.github.io/dev-tools" target="_blank">here</a></p>
         </section> 
+
+        <section>
+            <h2>Closures</h2>
+        </section>
         
         <section>
+            <h2>Higher-Order Functions Review</h2>
+            <p>A <span style="color:yellow;">high-order function</span> is a function that either:</p>
+            <ol>
+                <li class="fragment">takes a function as an input (argument). We've seen these before! <span class="fragment" style="color: yellow;">Callbacks</span>!</li>
+                <li class="fragment">returns a function as the output. Functions that are returned from a function are called <span style="color: yellow;">closures</span>, which we are about to cover!</li>
+            </ol>
+            <p class="fragment">To understand more about closures, we must first look at <span style="color: yellow;">scopes</span>.</p>
+        </section>
+
+        <section>
             <h2>Let's Review Scope</h2>
-            <p>The scope of a variabe or function is defined by its location within the source code (it is apparent lexically) and nested functions have access to variable declared in their outer scope.</p>
-            <p>We have covered this: it is global and local!</p>
+            <p>The scope of a variable or function is defined by:</p>
+            <ul>
+                <li>its location within the source code</li>
+                <li>and its context (more on this later)</li>
+            </ul>
+            <div class="fragment">
+                <p>We have seen scope before with variables!</p>
+                <ul>
+                    <li>A variable outside of a function has <span style="color:yellow;">global</span> scope.</li>
+                    <li>A variable inside of a function has <span style="color:yellow;">local</span> scope.</li>
+                </ul>
+            </div>
+            <p class="fragment">Good news! Nested functions, applicable to closures, have access to variables declared in their outer scope.</p>
         </section>
 
         <section>
             <h2>Lexical Scope</h2>
-            <pre><code class="hljs" data-trim contenteditable>
+            <p><span style="color: yellow;">Lexical scope</span> for a variable or a function is described to have a <span style="color: yellow;">lexical or static context</span>.</p>
+            <p>The context for the variable or function is static and does not change, meaning:</p>
+            <ul>
+                <li>If the variable or function is declared globally, its scope stays <span style="color: yellow;">global</span>.</li>
+                <li>If the variable or function is declared locally, its scope stays <span style="color: yellow;">local</span>.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Lexical Scope</h2>
+<pre><code class="hljs" data-trim contenteditable>
 function init() {
     var name = "Mozilla"; //name is a local variable created by init
     function displayName() { //displayName() is the inner function, a closure
@@ -325,7 +513,7 @@ function init() {
     displayName();
 }
 init();
-        </code></pre>
+</code></pre>
         </section>
 
         <section>
@@ -343,9 +531,9 @@ init();
 
         <section>
             <h2>What is a closure?</h2>
-            <p>Closures are functions that refer to independent (free) variables. In other words, the function defined in the closure ‘remembers’ the environment in which it was created.</p>
-            <p class="fragment">A closure is created when an inner function is made accessible from outside of the function that created it. This typically occurs when an outer function returns an inner function.</p>
-            <p class="fragment">This means that it remembers all of the variables (and their values) that were in scope at the time.</p>
+            <p><span style="color: yellow;">Closures</span> are functions that refer to independent (free) variables. In other words, the function defined in the closure ‘remembers’ the environment in which it was created.</p>
+            <p class="fragment">A <span style="color: yellow;">closure</span> is created when an inner function is made accessible from <i>outside of the function that created it</i>. This typically occurs when an outer function returns an inner function.</p>
+            <p class="fragment">This means that a <span style="color: yellow;">closure</span> remembers all of the variables (and their values) that were in scope at the time.</p>
         </section>
 
         <section>
@@ -355,13 +543,17 @@ init();
 
         <section>
             <h2>Closures</h2>
-            <p>Closures have many practical use cases. One important use case is to maintain a private reference to a variable in the outer scope.</p>
-            <p>We can use closures to make only certain things in our function accessible by other parts of our program.</p>
+            <p>Closures have many practical use cases.</p>
+            <ul>
+                <li class="fragment">One important use case is to maintain a private reference to a variable in the outer scope.</li>
+                <li class="fragment">Closures can make only certain things in our function accessible by other parts of our program.</li>
+                <li class="fragment">Developers can also associate an object's data with one or more methods, as we have seen in object-oriented programming.</li>
+            </ul>
         </section>
 
         <section>
             <h2>Examples!</h2>
-<pre><code>
+<pre><code class="js" data-trim contenteditable>
 function numberGenerator() {
     // Local “free” variable that ends up within the closure
     var num = 1;
@@ -379,8 +571,8 @@ number(); // 2
 
         <section>
             <h2>Closures</h2>
-            <p>Often closures are created when a function is the <span>output</span> on another function</p>
-<pre><code>
+            <p>Often closures are created when a function<br> is the <span style="color: yellow;">output</span> of another function.</p>
+<pre><code class="js" data-trim contenteditable>
 function sayHello() {
     var say = function() { console.log(hello); }
     // Local variable that ends up within the closure 
@@ -394,7 +586,8 @@ sayHelloClosure(); // ‘Hello, world!’
 
         <section>
             <h2>Explaining the code</h2>
-            <p>In the example above, the function numberGenerator creates a local “free” variable num (a number) and checkNumber (a function which prints num to the console). </p><p>The function checkNumber doesn’t have any local variables of its own — however, it does have access to the variables within the outer function, numberGenerator, because of a closure. <p>Therefore, it can use the variable num declared in numberGenerator to successfully log it to the console even after numberGenerator has returned.</p>
+            <p>In the example on the previous slide, the function <code style="color: aqua;">numberGenerator</code> creates a local “free” variable <code style="color: aqua;">num</code> (a number) and <code style="color: aqua;">checkNumber</code> (a function which prints <code style="color: aqua;">num</code> to the console).</p>
+            <p>The function <code style="color: aqua;">checkNumber</code> does not have any local variables of its own — however, it does have access to the variables within the outer function, <code style="color: aqua;">numberGenerator</code>, because of a closure. <p>Therefore, it can use the variable <code style="color: aqua;"num></code> declared in <code style="color: aqua;">numberGenerator</code> to successfully log it to the console even after <code style="color: aqua;">numberGenerator</code> has returned.</p>
         </section>
 
         <section>
@@ -414,7 +607,8 @@ say2(); // logs "Hello Bob"
 
         <section>
             <h2>Another example</h2>
-<pre><code>var x = 10;
+<pre><code class="js" data-trim contenteditable>
+var x = 10;
 function foo(a) {
     var b = 20;
 
@@ -446,14 +640,16 @@ var increment = add(1);
 var foo = increment(2);
 //foo equal 3
         </code></pre>  
-            <p>The add() function returns its inner function doAdd(). By returning a reference to an inner function, a closure is created.</p>
+            <p>The <code style="color: aqua;">add()</code> function returns its inner function of <code style="color: aqua;">doAdd()</code>.</p>
+            <p>By returning a reference to an inner function, a closure is created.</p>
         </section>
 
         <section>
             <h2>Scopes and Closures</h2>
             <p>Things to Remember</p>
             <ul>
-                <li>The previous code has a closure because the anonymous function is declared inside another function. In JS, if you use the function keyword inside another function, you are creating a closure.</li>
+                <li>The previous code has a closure because the anonymous function is declared inside another function.</li>
+                <li>In JS, if you use the function keyword inside another function, you are creating a closure.</li>
             </ul>
         </section>
 
@@ -466,7 +662,8 @@ var foo = increment(2);
         <section>
             <h2>Scopes and Closures</h2>
             <p>Cake Example Explained</p>
-            <p>If I am making a cake in my kitchen, I use all kind of tools and ingredients, but the only output that you see is the cake I make for you. You don’t have access to all the things in my kitchen but the cake has access to all the properties that made it (when it was being created in the kitchen)</p>            
+            <p>If I am making a cake in my kitchen, I use all kind of tools and ingredients, but the only output that you see is the cake I make for you.</p>
+            <p>You don’t have access to all the things in my kitchen but the cake has access to all the properties that made it (when it was being created in the kitchen).</p>            
         </section>
 
         <section>
@@ -481,7 +678,7 @@ function nameAdder(x){
 var add5 = makeAdder(5);
 var add10 = makeAdder(10);
         </code></pre>
-        <p>Console log these variables</p>
+        <p>Log to the console these variables. What do you see?</p>
         </section>
 
         <section>
@@ -491,7 +688,7 @@ var add10 = makeAdder(10);
 
         <section>
             <h2>Puppy Builder: Exercise</h2>
-            <p>Build this a new root folder and HTML file</p>
+            <p>Build a new root folder and HTML file.</p>
             <img src="img/closures.png" alt="Closure Practice" width="500px" /><br/>
             <img src="img/exercise.gif" alt="Exercise time" />
         </section>
@@ -499,7 +696,7 @@ var add10 = makeAdder(10);
         <section>
             <h2>Puppy Builder: Exercise</h2>
             <p>Turn this JS into a closure and uses the user's input</p>
-<pre><code>
+<pre><code class="js" data-trim contenteditable>
 $(document).ready(function(){
 
     function buildADog(){
@@ -520,7 +717,7 @@ $(document).ready(function(){
 
         <section>
             <h2>Exercise: Password Validator</h2>
-            <p>Create the following UI using Flexbox and Bootstrap</p>
+            <p>Create the following UI using Flexbox and Bootstrap.</p>
             <img src="img/password.png" alt="User login screen" width="500px">
         </section>
 
@@ -536,6 +733,26 @@ $(document).ready(function(){
             <a href="https://www.sitepoint.com/demystifying-javascript-closures-callbacks-iifes/">Sitepoint</a>
         </section>
 
+        <section>
+            <h2>Closures: Summary</h2>
+            <p><span style="color: yellow;">Closures</span> are functions that can reference variables in its outer scope: inside its parent function as well as outside its parent function.</p>
+            <p class="fragment"><span style="color: yellow;">Closures</span> ‘remember’ the environment, its variables and their values, in which it was created, and can be accessible from <i>outside of the function that created it</i>.</p>
+            <p class="fragment"><span style="color: yellow;">Closures</span> are often returned as the inner function of an outer function.</p>
+        </section>
+
+        <section>
+            <h2>Higher-Order Functions Roundup</h2>
+            <p>
+              Click
+              <a
+                href="https://docs.google.com/document/d/1VvenHUR8SK1DC9qvL-42JOuUscKVpmbP1ZxipesF79Y/edit?usp=sharing"
+                target="_blank"
+                >here</a
+              >
+              to review.
+            </p>
+          </section>
+
         <section style="text-align: left;">
             <h1>THE END</h1>
             <p>Thank you for your attention!</p>
@@ -545,6 +762,8 @@ $(document).ready(function(){
 
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="js/zoomin.js"></script>
 <script src="lib/js/head.min.js"></script>
 <script src="js/reveal.js"></script>
 
